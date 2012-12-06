@@ -22,15 +22,31 @@ Just add your api key for each application. If you don't use one of them, just c
 
 ## Default Values
 
+To override default values:
+```js
+    var application = new Application({
+        "api_key" : "123456789",
+        "url"     : "http://hostname/path/",
+        "limit"   : 20,
+    });
+```
+
 ### SABnzbd+
 
 `url`   : `http://127.0.0.1:8080/sabnzbd/`
+
+
 `limit` : `10`
 
 ### Sick Beard
+
 `url`   : `http://127.0.0.1:8081/`
+
+
 `limit` : `10`
 
 ### Couch Potato
+
 `url`   : `http://127.0.0.1:5050/`
+
 `limit` : `10`
