@@ -1,0 +1,102 @@
+<html>
+<head>
+  <title>media server landing page</title>
+
+  <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/latest/css/bootstrap.no-responsive.no-icons.min.css" rel="stylesheet">
+  <link href="media-landing.css" rel="stylesheet">
+
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.2.1/bootstrap.min.js"></script>
+  <script type="text/javascript" src="http://borismoore.github.com/jsrender/jsrender.js"></script>
+  <script type="text/javascript" src="media-landing.js"></script>
+
+  <script type="text/javascript">
+  $(function(){
+      var sabnzbd = new SABnzbd({
+          "api_key" : "",
+      });
+
+      var sickbeard = new SickBeard({
+          "api_key" : "",
+      });
+
+      var couchpotato = new CouchPotato({
+          "api_key" : "",
+      });
+  });
+  </script>
+
+  <script id="sabnzbd-template" type="text/x-jsrender">
+    <tr class="{{:class}}" id="sabnzbd-{{:id}}">
+      <td>{{:name}}</td>
+      <td>{{:size}}</td>
+      <td>{{:date}}</td>
+    </tr>
+  </script>
+
+  <script id="sickbeard-template" type="text/x-jsrender">
+    <tr class="sickbeard-{{:class}}">
+      <td>{{:name}}</td>
+      <td>{{:season}} x {{:episode}} - {{:episode_name}}</td>
+      <td>{{:air_date}} ({{:airs}})</td>
+    </tr>
+  </script>
+
+  <script id="couchpotato-template" type="text/x-jsrender">
+    <tr>
+      <td>{{:title}}</td>
+      <td>{{:quality}}</td>
+      <td>{{:release_date}}</td>
+    </tr>
+  </script>
+
+</head>
+<body>
+
+  <div class="container" id="sabnzbd">
+    <h2><a href="http://127.0.0.1:8080/sabnzbd/">sabnzbd</a></h2>
+    <table id="sabnzbd-downloads" class="table table-condensed">
+      <thead>
+        <tr>
+          <td>name</td>
+          <td>size</td>
+          <td>completed</td>
+        </tr>
+        <tbody>
+        </tbody>
+      </thead>
+    </table>
+  </div>
+
+  <div class="container" id="sickbeard">
+    <h2><a href="http://127.0.01:8081/">sickbeard</a></h2>
+    <table id="sickbeard-upcoming" class="table table-condensed">
+      <thead>
+        <tr>
+          <td>show</td>
+          <td>episode</td>
+          <td>airs</td>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="container" id="couchpotato">
+    <h2><a href="http://127.0.0.1:5050/">couchpotato</a></h2>
+    <table id="couchpotato-downloads" class="table table-condensed">
+      <thead>
+        <tr>
+          <td>name</td>
+          <td>quality</td>
+          <td>release date</td>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

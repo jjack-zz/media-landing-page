@@ -1,0 +1,27 @@
+.sabnzbd-complete {
+  background-color: #dfd;
+}
+.sabnzbd-failed {
+  background-color: #fdd;
+}
+.sickbeard-today {
+  background-color: #dfd;
+}
+
+.sickbeard-missed {
+  background-color: #fdd;
+}
+.sickbeard-soon {
+  background-color: #f5f1e4;
+}
+
+.tooltip {
+  font-size: 18 px;
+}
+.tooltip-inner {
+  max-width: 1024 px;
+}
+
+.container {
+  display: none;
+}
