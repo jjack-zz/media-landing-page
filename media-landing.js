@@ -4,14 +4,14 @@ $(function () {
                                                    : params.api_key;
         this.limit   = params.limit   == undefined ? 10
                                                    : params.limit;
-        this.url     = params.url     == undefined ? "http://127.0.0.1:8080/sabnzbd/"
+        this.url     = params.url     == undefined ? "http://127.0.0.1:8080/"
                                                    : params.url;
 
         // start updating the page while the object is created
         this.refresh();
 
         // update the sabnzbd link and show the table
-        $("a[href='http://127.0.0.1:8080/sabnzbd/']").attr("href", this.url);
+        $("a[href='http://127.0.0.1:8080/']").attr("href", this.url);
         $("#sabnzbd").show();
 
         return this;
@@ -19,7 +19,7 @@ $(function () {
     SABnzbd.prototype.refresh = function () {
         var date_obj    = new Date();
         var today_ymd   = date_obj.getFullYear() + "-" + date_obj.getMonth() + "-" + date_obj.getDate();
-        var sabnzbd_url = this.url + "/api?&mode=history&output=json&callback=?&limit=" + this.limit +
+        var sabnzbd_url = this.url + "api?&mode=history&output=json&callback=?&limit=" + this.limit +
                           "&start=" + today_ymd + "&apikey=" + this.api_key;
 
         // clear out any existing downloads
@@ -113,7 +113,7 @@ $(function () {
         this.refresh();
 
         // update the couchpotato link and show the table
-        $("a[href='http://127.0.01:5050/']").attr("href", this.url);
+        $("a[href='http://127.0.0.1:5050/']").attr("href", this.url);
         $("#couchpotato").show();
 
         return this;
