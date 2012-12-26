@@ -141,8 +141,6 @@ $(function () {
     Headphones = function (params) {
         this.api_key = params.api_key == undefined ? alert("api_key is a required parameter for Headphones")
                                                    : params.api_key;
-        this.limit   = params.limit   == undefined ? 10
-                                                   : params.limit;
         this.url     = params.url     == undefined ? "http://127.0.0.1:8181/"
                                                    : params.url;
 

@@ -1,6 +1,6 @@
 ## What is This?
 
-A little landing page for SABnzbd+, Sick Beard, and CouchPotato.
+A little landing page for SABnzbd+, Sick Beard, CouchPotato, and Headphones.
 
 ## Initial Setup
 
@@ -15,7 +15,7 @@ Just add your api key for each application. If you don't use one of them, just c
           "api_key" : "1266e092c888d5caeea3f3db59359101",
       });
 
-      var couchpotato = new CouchPotato({
+      var headphones = new Headphones({
           "api_key" : "284ed2abb2854b5c819fbf11f9c54bce",
       });
 ```
@@ -31,22 +31,41 @@ To override default values:
     });
 ```
 
-### SABnzbd+
+### SABnzbd+ Parameters
+#### url
+The base URL for SABnzbd+.
 
-`url`   : `http://127.0.0.1:8080/sabnzbd/`
+`http://127.0.0.1:8080/`
 
+#### limit
+The maximum number of recent downloads to display.
 
-`limit` : `10`
+`10`
 
-### Sick Beard
+### Sick Beard Parameters
+#### url
+The base URL for Sick beard.
 
-`url`   : `http://127.0.0.1:8081/`
+`http://127.0.0.1:8081/`
 
+#### limit
+The maximum number of upcoming and missed shows to display.
 
-`limit` : `10`
+`10`
 
-### Couch Potato
+### Couch Potato Parameters
+#### url
+The base URL for Couch Potato.
 
-`url`   : `http://127.0.0.1:5050/`
+`http://127.0.0.1:5050/`
 
-`limit` : `10`
+#### limit
+The maximum number of recently found movies to display.
+
+`10`
+
+### Headphones Parameters
+#### url
+The base URL for Headphones.
+
+`http://127.0.0.1:8181/`
