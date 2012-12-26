@@ -23,11 +23,16 @@
       var couchpotato = new CouchPotato({
           "api_key" : "",
       });
+
+      var headphones = new Headphones({
+          "api_key" : "",
+      });
+
   });
   </script>
 
   <script id="sabnzbd-template" type="text/x-jsrender">
-    <tr class="{{:class}}" id="sabnzbd-{{:id}}">
+    <tr class="sabnzbd-{{:class}}" id="sabnzbd-{{:id}}">
       <td>{{:name}}</td>
       <td>{{:size}}</td>
       <td>{{:date}}</td>
@@ -47,6 +52,13 @@
       <td>{{:title}}</td>
       <td>{{:quality}}</td>
       <td>{{:release_date}}</td>
+    </tr>
+  </script>
+
+  <script id="headphones-template" type="text/x-jsrender">
+    <tr class="headphones-{{:class}}">
+      <td><a href="{{:album_url}}">{{:title}}</a></td>
+      <td>{{:status}}</td>
     </tr>
   </script>
 
@@ -97,6 +109,20 @@
       </tbody>
     </table>
   </div>
+
+  <div class="container" id="headphones">
+    <h2><a href="http://127.0.0.1:8181/">Headphones</a></h2>
+    <table id="headphones-downloads" class="table table-condensed">
+      <thead>
+        <tr>
+          <td>title</td>
+          <td>status</td>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+   </div>
 
 </body>
 </html>

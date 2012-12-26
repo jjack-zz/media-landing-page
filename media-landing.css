@@ -15,6 +15,16 @@
   background-color: #f5f1e4;
 }
 
+.headphones-processed {
+  background-color: #dfd;
+}
+.headphones-snatched {
+  background-color: #f5f1e4;
+}
+.headphones-unprocessed {
+  background-color: #fdd;
+}
+
 .tooltip {
   font-size: 18 px;
 }

@@ -33,7 +33,7 @@ $(function () {
                         "name"  : file.name,
                         "size"  : file.size,
                         "date"  : new Date(file.completed * 1000),
-                        "class" : file.status == "Completed" ? "sabnzbd-complete" : "sabnzbd-failed",
+                        "class" : file.status == "Completed" ? "complete" : "failed",
                     };
 
                     $("#sabnzbd-downloads > tbody:last").append($("#sabnzbd-template").render(vars));
@@ -86,13 +86,13 @@ $(function () {
                 if (data[type]) {
                     $.each(data[type], function (id, episode) {
                         var vars = {
-                            "name": episode.show_name,
-                            "season": episode.season,
-                            "episode": episode.episode,
-                            "episode_name": episode.ep_name,
-                            "air_date": episode.airdate,
-                            "airs": episode.airs,
-                            "class": type,
+                            "name"         : episode.show_name,
+                            "season"       : episode.season,
+                            "episode"      : episode.episode,
+                            "episode_name" : episode.ep_name,
+                            "air_date"     : episode.airdate,
+                            "airs"         : episode.airs,
+                            "class"        : type,
                         };
 
                         $("#sickbeard-upcoming > tbody:last").append($("#sickbeard-template").render(vars));
@@ -137,4 +137,43 @@ $(function () {
             });
         });
     };
+
+    Headphones = function (params) {
+        this.api_key = params.api_key == undefined ? alert("api_key is a required parameter for Headphones")
+                                                   : params.api_key;
+        this.limit   = params.limit   == undefined ? 10
+                                                   : params.limit;
+        this.url     = params.url     == undefined ? "http://127.0.0.1:8181/"
+                                                   : params.url;
+
+        // start updating the page while the object is created
+        this.refresh();
+
+        // update the headphones link and show the table
+        $("a[href='http://127.0.0.1:8181/']").attr("href", this.url);
+        $("#headphones").show();
+
+        return this;
+    };
+    Headphones.prototype.refresh = function () {
+        var base_url       = this.url;
+        var headphones_url = base_url + "api/?&cmd=getHistory&callback=?&apikey=" + this.api_key;
+
+        // clear out any existing history
+        $("#headphones-downloads > tbody:last").children().remove();
+
+        $.getJSON(headphones_url, function (data) {
+            $.each(data, function (id, file) {
+                var vars = {
+                    "status"    : file.Status,
+                    "title"     : file.Title,
+                    "class"     : file.Status.toLowerCase(),
+                    "album_url" : base_url + "albumPage?AlbumID=" + file.AlbumID,
+                };
+
+                $("#headphones-downloads > tbody:last").append($("#headphones-template").render(vars));
+            });
+        });
+    };
+
 });
