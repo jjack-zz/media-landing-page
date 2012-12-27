@@ -15,8 +15,12 @@ Just add your api key for each application. If you don't use one of them, just c
           "api_key" : "1266e092c888d5caeea3f3db59359101",
       });
 
-      var headphones = new Headphones({
+      var couchpotato = new CouchPotato({
           "api_key" : "284ed2abb2854b5c819fbf11f9c54bce",
+      });
+
+      var headphones = new Headphones({
+          "api_key" : "9394ed9dd44d0d49413e7afce75f7773",
       });
 ```
 
