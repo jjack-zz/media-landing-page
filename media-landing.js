@@ -38,15 +38,33 @@ $(function () {
 
                     $("#sabnzbd-downloads > tbody:last").append($("#sabnzbd-template").render(vars));
 
-                    // do we need to add a tooltip failure message?
-                    if (file.fail_message != "") {
-                        var tooltip_vars = {
-                            "placement" : "top",
-                            "title"     : file.fail_message,
-                        };
+                    // build the tooltip display
+                    var message = file.fail_message == "" ? "" : file.fail_message + " / ";
+                    $.each(file.stage_log, function(id, stage) {
+                        if ( stage.name == "Source" ) {
+                            return true;
+                        }
+                        $.each(stage.actions, function(stage_id, action) {
+                            // bootstrap tooltips don't currently support html linebreaks,
+                            // so we're going with a slash
+                            action = action.replace(/<br\/>/g," / ");
 
-                        $("#sabnzbd-" + file.id).tooltip(tooltip_vars);
-                    }
+                            // some actions have the download name in brackets
+                            action = action.match(/([^\]]+)$/)[0];
+
+                            message += action + " / ";
+                        });
+                    });
+
+                    // trim the trailing slash
+                    message = message.replace(/\s\/\s$/,"");
+
+                    var tooltip_vars = {
+                        "placement" : "top",
+                        "title"     : message,
+                    };
+
+                    $("#sabnzbd-" + file.id).tooltip(tooltip_vars);
                 });
             });
         });
@@ -70,6 +88,7 @@ $(function () {
         return this;
     };
     SickBeard.prototype.refresh = function () {
+        var base_url      = this.url;
         var sickbeard_url = this.url + "api/" + this.api_key + "/?cmd=future&limit=" + this.limit +
                             "&callback=?&sort=date&type=today|missed|soon";
 
@@ -93,6 +112,7 @@ $(function () {
                             "air_date"     : episode.airdate,
                             "airs"         : episode.airs,
                             "class"        : type,
+                            "show_url"     : base_url + "/home/displayShow?show=" + episode.tvdbid,
                         };
 
                         $("#sickbeard-upcoming > tbody:last").append($("#sickbeard-template").render(vars));
