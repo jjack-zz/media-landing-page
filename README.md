@@ -2,6 +2,8 @@
 
 A little landing page for SABnzbd+, Sick Beard, CouchPotato, and Headphones.
 
+In action: http://i.imgur.com/a7Wtzq4.jpg
+
 ## Initial Setup
 
 Just add your api key for each application. If you don't use one of them, just comment it out or remove it.
@@ -29,8 +31,8 @@ Just add your api key for each application. If you don't use one of them, just c
 To override default values:
 ```js
     var application = new Application({
-        "api_key" : "123456789",
-        "url"     : "http://hostname/path/",
+        "api_key" : "1d75b8078d4ba23e06f6ee1217556dda",
+        "url"     : "http://hostname:port/path/",
         "limit"   : 20,
     });
 ```
