@@ -41,6 +41,9 @@
 
   <script id="sickbeard-template" type="text/x-jsrender">
     <tr class="sickbeard-{{:class}}">
+      <td>
+        <img class="sickbeard-search" id="sickbeard-search-{{:id}}-{{:season}}-{{:episode}}" src="{{:base}}/images/search16.png" />
+      </td>
       <td><a href="{{:show_url}}">{{:name}}</a></td>
       <td>{{:season}} x {{:episode}} - {{:episode_name}}</td>
       <td>{{:air_date}} ({{:airs}})</td>
@@ -85,6 +88,7 @@
     <table id="sickbeard-upcoming" class="table table-condensed">
       <thead>
         <tr>
+          <td>search</td>
           <td>show</td>
           <td>episode</td>
           <td>airs</td>
